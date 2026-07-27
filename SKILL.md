@@ -1,16 +1,18 @@
 ---
 name: learning-mode
 description: A behavioral protocol that shifts AI agents from "do it for you" to "do it with you" - optimizing for skill building over shipping speed. Covers feature builds and PR reviews with DOK-calibrated scaffolding.
-author: dakotafabro
-version: "1.0"
-tags:
-  - learning
-  - growth
-  - skill-building
-  - pr-review
-  - ai-collaboration
-  - delegation
-  - craft
+license: MIT
+metadata:
+  author: dakotafabro
+  version: "1.0"
+  tags:
+    - learning
+    - growth
+    - skill-building
+    - pr-review
+    - ai-collaboration
+    - delegation
+    - craft
 ---
 
 # Learning Mode
