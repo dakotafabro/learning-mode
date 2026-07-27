@@ -185,76 +185,22 @@ Your strong and growth platforms tell the agent where to bridge FROM and where t
 
 ### Analogy Preferences
 
-Analogies are one of the most powerful features of Learning Mode. When you tell the agent which domains to draw from, you're giving it permission to explain things in YOUR mental model instead of textbook language.
+Analogies help the agent explain how things work together architecturally by mapping new concepts onto mental models you already hold. Instead of textbook definitions, the agent describes how pieces relate, compose, and depend on each other using language from a domain you think fluently in.
 
-This matters because understanding isn't about memorizing definitions - it's about connecting new concepts to structures you already hold. A chef understands composition differently than a musician, but both have deep intuitions about how parts relate to wholes. The right analogy makes a concept click instantly instead of requiring three re-reads.
+For example, if you tell the agent to use cooking analogies, it might explain a component architecture as: "Think of this like mise en place - you're setting up all your ingredients (props, state, dependencies) before the actual cooking (render) begins. The recipe is the pattern, plating is the UI layer the user sees."
+
+The point isn't to be cute. It's to give you a structural mental model for how the build fits together - what depends on what, what flows where, and why things are organized the way they are. Pick any domain where you already have strong intuitions about composition and structure: cooking, music production, woodworking, gardening, architecture, sports. The agent maps from there.
 
 **How to configure:**
 
 ```markdown
-- Analogies: use cooking analogies for architecture, use music production analogies for state management
+- Analogies: use cooking analogies for architecture decisions
 ```
 
-**Cooking analogies for architecture:**
-
-| Cooking concept | Maps to | Why it works |
-|----------------|---------|--------------|
-| Recipes | Design patterns | Repeatable processes with known outcomes |
-| Mise en place | Project setup/bootstrapping | Everything in its place before you start |
-| Plating | UI polish/presentation layer | The final layer that users actually see |
-| Flavor profiles | API contracts | The interface between components that need to work together |
-| Prep cook vs. line cook | Build-time vs. runtime | Different phases with different concerns |
+You can specify different domains for different concerns, or keep it simple with one:
 
 ```markdown
-- Analogies: use cooking analogies for architecture
-```
-
-**Music production analogies for state management:**
-
-| Music concept | Maps to | Why it works |
-|--------------|---------|--------------|
-| Tracks | Data streams/observables | Independent channels that combine into a whole |
-| Mixing | State composition | Balancing multiple sources into coherent output |
-| Mastering | Performance optimization | Final pass that makes everything work together cleanly |
-| Effects chain | Middleware/operators | Transformations applied in sequence |
-| Stems | Derived state | Isolated pieces you can manipulate independently |
-
-```markdown
-- Analogies: use music production analogies for state management
-```
-
-**Gardening analogies for system design:**
-
-| Gardening concept | Maps to | Why it works |
-|------------------|---------|--------------|
-| Pruning | Refactoring | Removing dead paths so healthy growth can continue |
-| Composting | Deprecation | Old code decomposing into nutrients for new code |
-| Seasons | Release cycles | Natural rhythms of planting, growing, harvesting |
-| Root systems | Infrastructure | Invisible but essential support for everything above |
-| Companion planting | Service co-location | Things that grow better together |
-
-```markdown
-- Analogies: use gardening analogies for system design
-```
-
-**Woodworking analogies for component design:**
-
-| Woodworking concept | Maps to | Why it works |
-|--------------------|---------|--------------|
-| Joints | Interfaces/props | How pieces connect determines structural integrity |
-| Grain direction | Data flow | Work WITH the grain or things split apart |
-| Jigs | Templates/generators | Reusable tools that ensure consistent output |
-| Dry fit | Type checking | Testing the fit before committing |
-| Finish | Styling/theming | The surface layer that protects and beautifies |
-
-```markdown
-- Analogies: use woodworking analogies for component design
-```
-
-You can combine multiple analogy domains. The agent picks the right one based on what you're working on:
-
-```markdown
-- Analogies: use cooking analogies for architecture, woodworking for components, music for reactive patterns
+- Analogies: use music production analogies for state management, cooking for architecture
 ```
 
 ### Full Configuration Examples
