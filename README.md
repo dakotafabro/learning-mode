@@ -12,10 +12,12 @@ Learning Mode flips the objective. Instead of minimizing time-to-merge, the agen
 
 The skill maps your growth across four tiers that mirror how engineers actually level up:
 
-1. **Orientation** - You're new here. The agent provides full context, explains the landscape, bridges concepts from what you already know to what you're learning. Heavy scaffolding.
-2. **Judgment** - You can navigate but need help making decisions. The agent presents options, explains tradeoffs, asks you to choose. It validates your reasoning instead of just giving answers.
-3. **Execution** - You know what to do but need reps. The agent steps back, lets you drive, catches mistakes before they compound. Light touch.
-4. **Multiplication** - You're teaching others. The agent challenges you to articulate WHY, helps you create patterns and documentation that scale your knowledge to the team.
+| Tier | You're at | Agent behavior |
+|------|-----------|----------------|
+| Orientation | New here. Can read but haven't built. | Full context, bridges from what you know, heavy scaffolding. |
+| Judgment | Can navigate but need help deciding. | Presents options, explains tradeoffs, validates your reasoning. |
+| Execution | Know what to do, need reps. | Steps back, lets you drive, catches mistakes. Light touch. |
+| Multiplication | Teaching others. | Challenges you to articulate WHY, helps you scale knowledge. |
 
 **DOK Calibration**
 
@@ -23,8 +25,10 @@ Each skill you're growing gets a Depth of Knowledge level (1-4) that tells the a
 
 **Two Modes**
 
-- **Feature Build** - Learning while coding. The agent guides instead of executes. It asks "what would you try here?" before showing you the answer. It explains architectural decisions as you encounter them. It offers micro-challenges (5-15 minute focused exercises) when it spots a growth opportunity.
-- **PR Review** - Learning while reading code. The agent provides context-first explanations, bridges vocabulary from your strong platform, and helps you understand WHY the code is structured the way it is - not just WHAT it does.
+| Mode | When | What the agent does |
+|------|------|---------------------|
+| Feature Build | Learning while coding | Guides instead of executes. Asks "what would you try?" before showing answers. Offers micro-challenges (5-15 min exercises) at growth opportunities. |
+| PR Review | Learning while reading code | Provides context-first explanations, bridges vocabulary from your strong platform, helps you understand WHY not just WHAT. |
 
 **Graduation Signals**
 
@@ -40,9 +44,11 @@ The agent notices when you level up. When you start making correct decisions wit
 
 Anyone who uses AI agents to build and ship - and wants to actually get better at the craft, not just produce output faster.
 
-- **Engineers** learning a new language, platform, or architectural pattern. You want to ship the feature AND understand what you shipped.
-- **Designers** who code (or are learning to). You're using AI to implement your designs but want to build real fluency in React, CSS, or whatever your implementation stack is.
-- **Hybrid roles** bridging disciplines. You're strong in one domain and growing in another, and you want the agent to respect that asymmetry instead of treating you like a beginner at everything.
+| Role | How Learning Mode helps |
+|------|------------------------|
+| Engineers | Learning a new language, platform, or architectural pattern. Ship the feature AND understand what you shipped. |
+| Designers | Using AI to implement designs but want real fluency in React, CSS, or your implementation stack. |
+| Hybrid roles | Strong in one domain, growing in another. The agent respects that asymmetry instead of treating you like a beginner at everything. |
 
 If you've ever finished an AI-assisted coding session and thought "I have no idea what just happened but it works" - this is for you.
 
