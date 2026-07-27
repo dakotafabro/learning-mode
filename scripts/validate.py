@@ -49,6 +49,7 @@ def main():
             check("Has 'name' field", "name" in fm)
             check("Has 'description' field", "description" in fm)
             check("Has 'license' field", "license" in fm)
+            check("License is Apache-2.0", fm.get("license") == "Apache-2.0")
 
             allowed = {"name", "description", "license", "allowed-tools", "metadata", "compatibility"}
             unexpected = set(fm.keys()) - allowed

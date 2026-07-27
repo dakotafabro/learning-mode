@@ -1,14 +1,56 @@
 # learning-mode
 
-A behavioral skill for AI agents that shifts them from "do it for you" to "do it with you" - optimizing for skill building over shipping speed.
+A behavioral skill for AI agents that shifts them from "do it for you" to "do it with you" - building your expertise instead of replacing it.
 
-## What This Does
+## How It Works
 
-Learning Mode gives your AI agent a different objective: maximize YOUR understanding, not minimize time-to-merge. It calibrates scaffolding to your current depth of knowledge, progressively reducing support as you grow. Covers both feature builds (learning while coding) and PR reviews (learning while reading code).
+Most AI coding tools optimize for one thing: get the code written as fast as possible. That's fine when you're in your comfort zone. But when you're growing into new territory - a new language, a new platform, unfamiliar patterns - speed becomes the enemy of understanding. You ship the feature but you didn't learn anything. Next time, you're just as dependent on the agent.
+
+Learning Mode flips the objective. Instead of minimizing time-to-merge, the agent maximizes YOUR depth of understanding. It still helps you ship, but it does so in a way that makes you more capable each time.
+
+**The 4-Tier Model**
+
+The skill maps your growth across four tiers that mirror how engineers actually level up:
+
+1. **Orientation** - You're new here. The agent provides full context, explains the landscape, bridges concepts from what you already know to what you're learning. Heavy scaffolding.
+2. **Judgment** - You can navigate but need help making decisions. The agent presents options, explains tradeoffs, asks you to choose. It validates your reasoning instead of just giving answers.
+3. **Execution** - You know what to do but need reps. The agent steps back, lets you drive, catches mistakes before they compound. Light touch.
+4. **Multiplication** - You're teaching others. The agent challenges you to articulate WHY, helps you create patterns and documentation that scale your knowledge to the team.
+
+**DOK Calibration**
+
+Each skill you're growing gets a Depth of Knowledge level (1-4) that tells the agent exactly how much scaffolding to provide. DOK 1 means you can recall facts but can't apply them yet. DOK 4 means you can synthesize across domains and teach. The agent reads your DOK levels and adjusts its behavior per-skill, per-session. You might be DOK 3 in state management but DOK 1 in accessibility - the agent treats those differently in the same conversation.
+
+**Two Modes**
+
+- **Feature Build** - Learning while coding. The agent guides instead of executes. It asks "what would you try here?" before showing you the answer. It explains architectural decisions as you encounter them. It offers micro-challenges (5-15 minute focused exercises) when it spots a growth opportunity.
+- **PR Review** - Learning while reading code. The agent provides context-first explanations, bridges vocabulary from your strong platform, and helps you understand WHY the code is structured the way it is - not just WHAT it does.
+
+**Graduation Signals**
+
+The agent notices when you level up. When you start making correct decisions without prompting, when your questions shift from "what" to "why" to "what if," the agent surfaces it: "You're consistently making good judgment calls on X - ready to move to Execution tier?" Growth becomes visible.
 
 **Agent-agnostic.** Works with Goose (CLI + Desktop), Claude (Code + Desktop), Cursor, Codex, Amp, Gemini CLI, and any agent that reads markdown instructions.
 
 **Model-agnostic.** The skill is plain English instructions. Works with Claude, GPT, Gemini, Llama, or whatever model your agent uses.
+
+---
+
+## Who This Is For
+
+Anyone who uses AI agents to build and ship - and wants to actually get better at the craft, not just produce output faster.
+
+- **Engineers** learning a new language, platform, or architectural pattern. You want to ship the feature AND understand what you shipped.
+- **Designers** who code (or are learning to). You're using AI to implement your designs but want to build real fluency in React, CSS, or whatever your implementation stack is.
+- **Hybrid roles** bridging disciplines. You're strong in one domain and growing in another, and you want the agent to respect that asymmetry instead of treating you like a beginner at everything.
+
+If you've ever finished an AI-assisted coding session and thought "I have no idea what just happened but it works" - this is for you.
+
+---
+
+## Philosophy
+
+AI agents are the most powerful learning tools ever built, but only if you use them that way. The default mode - generate, accept, ship - optimizes for throughput at the cost of understanding. Learning Mode treats every interaction as a chance to build durable skill. The goal isn't to slow you down. It's to make you faster by making you deeper.
 
 ---
 
@@ -43,7 +85,7 @@ If your agent doesn't support the skills CLI or `.skill` files, copy the content
 
 ---
 
-## Setup (After Install)
+## Setup
 
 The skill works immediately with zero config. Say `"learning mode"` in any session and the agent shifts behavior. For deeper calibration, complete these two optional steps:
 
@@ -90,37 +132,164 @@ Add a config block to your agent's hints file for persistent personalization acr
 - Session Log: [optional - path for learning session logs]
 ```
 
-**Example (React engineer learning Android):**
-
-```markdown
-## Learning Mode Config
-
-- Strong platform: React/TypeScript, Node.js
-- Growth platform: Kotlin/Android (Jetpack Compose, coroutines, Dagger/Hilt)
-- DOK Tracker: ~/development/my-app/growth/dok-tracker.md
-- Analogies: use React equivalents when bridging concepts
-- Session Log: ~/development/my-app/growth/learning-log.md
-```
-
-**Example (Backend engineer learning frontend):**
-
-```markdown
-## Learning Mode Config
-
-- Strong platform: Go, PostgreSQL, distributed systems
-- Growth platform: React/TypeScript, CSS, browser APIs
-- DOK Tracker: ./dok-tracker.md
-- Analogies: use server architecture analogies for component patterns
-- Session Log: ./learning-sessions.md
-```
-
 ---
 
 ## Customization
 
 Everything is customized through the config block and DOK tracker. You never edit the installed skill files.
 
-### What you can customize:
+### Platform Configuration
+
+Your strong and growth platforms tell the agent where to bridge FROM and where to scaffold TO. Here are examples for different roles:
+
+**Frontend engineer learning mobile:**
+
+```markdown
+- Strong platform: React/TypeScript, Node.js, CSS
+- Growth platform: Kotlin/Android (Jetpack Compose, coroutines, Dagger/Hilt)
+```
+
+**Backend engineer learning frontend:**
+
+```markdown
+- Strong platform: Go, PostgreSQL, distributed systems, Kubernetes
+- Growth platform: React/TypeScript, CSS, browser APIs, accessibility
+```
+
+**Designer learning to code:**
+
+```markdown
+- Strong platform: Figma, design systems, visual hierarchy, typography, color theory
+- Growth platform: React, CSS-in-JS, component architecture, responsive implementation
+```
+
+**Designer-who-codes deepening implementation skills:**
+
+```markdown
+- Strong platform: Visual design, CSS, HTML, Figma-to-code workflows
+- Growth platform: React state management, API integration, performance optimization
+```
+
+**Full-stack engineer learning infrastructure:**
+
+```markdown
+- Strong platform: Rails, React, PostgreSQL, REST APIs
+- Growth platform: Terraform, AWS CDK, CI/CD pipelines, observability
+```
+
+### Analogy Preferences
+
+Analogies are one of the most powerful features of Learning Mode. When you tell the agent which domains to draw from, you're giving it permission to explain things in YOUR mental model instead of textbook language.
+
+This matters because understanding isn't about memorizing definitions - it's about connecting new concepts to structures you already hold. A chef understands composition differently than a musician, but both have deep intuitions about how parts relate to wholes. The right analogy makes a concept click instantly instead of requiring three re-reads.
+
+**How to configure:**
+
+```markdown
+- Analogies: use cooking analogies for architecture, use music production analogies for state management
+```
+
+**Cooking analogies for architecture:**
+
+| Cooking concept | Maps to | Why it works |
+|----------------|---------|--------------|
+| Recipes | Design patterns | Repeatable processes with known outcomes |
+| Mise en place | Project setup/bootstrapping | Everything in its place before you start |
+| Plating | UI polish/presentation layer | The final layer that users actually see |
+| Flavor profiles | API contracts | The interface between components that need to work together |
+| Prep cook vs. line cook | Build-time vs. runtime | Different phases with different concerns |
+
+```markdown
+- Analogies: use cooking analogies for architecture
+```
+
+**Music production analogies for state management:**
+
+| Music concept | Maps to | Why it works |
+|--------------|---------|--------------|
+| Tracks | Data streams/observables | Independent channels that combine into a whole |
+| Mixing | State composition | Balancing multiple sources into coherent output |
+| Mastering | Performance optimization | Final pass that makes everything work together cleanly |
+| Effects chain | Middleware/operators | Transformations applied in sequence |
+| Stems | Derived state | Isolated pieces you can manipulate independently |
+
+```markdown
+- Analogies: use music production analogies for state management
+```
+
+**Gardening analogies for system design:**
+
+| Gardening concept | Maps to | Why it works |
+|------------------|---------|--------------|
+| Pruning | Refactoring | Removing dead paths so healthy growth can continue |
+| Composting | Deprecation | Old code decomposing into nutrients for new code |
+| Seasons | Release cycles | Natural rhythms of planting, growing, harvesting |
+| Root systems | Infrastructure | Invisible but essential support for everything above |
+| Companion planting | Service co-location | Things that grow better together |
+
+```markdown
+- Analogies: use gardening analogies for system design
+```
+
+**Woodworking analogies for component design:**
+
+| Woodworking concept | Maps to | Why it works |
+|--------------------|---------|--------------|
+| Joints | Interfaces/props | How pieces connect determines structural integrity |
+| Grain direction | Data flow | Work WITH the grain or things split apart |
+| Jigs | Templates/generators | Reusable tools that ensure consistent output |
+| Dry fit | Type checking | Testing the fit before committing |
+| Finish | Styling/theming | The surface layer that protects and beautifies |
+
+```markdown
+- Analogies: use woodworking analogies for component design
+```
+
+You can combine multiple analogy domains. The agent picks the right one based on what you're working on:
+
+```markdown
+- Analogies: use cooking analogies for architecture, woodworking for components, music for reactive patterns
+```
+
+### Full Configuration Examples
+
+**A designer moving into frontend engineering:**
+
+```markdown
+## Learning Mode Config
+
+- Strong platform: Figma, design systems, visual design, typography, layout
+- Growth platform: React, TypeScript, CSS modules, component APIs
+- DOK Tracker: ./growth/dok-tracker.md
+- Analogies: use design system analogies for component architecture (tokens = variables, variants = props, auto-layout = flexbox)
+- Session Log: ./growth/learning-log.md
+```
+
+**A backend engineer picking up frontend:**
+
+```markdown
+## Learning Mode Config
+
+- Strong platform: Java, Spring Boot, PostgreSQL, distributed systems, event sourcing
+- Growth platform: React/TypeScript, CSS, browser APIs, accessibility, responsive design
+- DOK Tracker: ~/growth/dok-tracker.md
+- Analogies: use server architecture analogies for component patterns (services = components, DTOs = props, middleware = hooks)
+- Session Log: ~/growth/sessions.md
+```
+
+**A designer-who-codes leveling up on state and APIs:**
+
+```markdown
+## Learning Mode Config
+
+- Strong platform: Visual design, CSS, HTML, basic React components, Figma
+- Growth platform: React state management (Context, reducers, Zustand), REST API integration, error handling, loading states
+- DOK Tracker: ./dok-tracker.md
+- Analogies: use design workflow analogies (artboards = routes, layers = component tree, symbols = shared components, prototyping = state transitions)
+- Session Log: ./learning-sessions.md
+```
+
+### Options Reference
 
 | Option | Where | What it controls |
 |--------|-------|-----------------|
@@ -133,8 +302,8 @@ Everything is customized through the config block and DOK tracker. You never edi
 ### In-session adjustments (no file edits needed):
 
 - `"learning mode for [specific skill]"` - narrow to one skill
-- `"use [domain] analogies for this"` - change analogy domain
-- `"I already know [X], skip the bridging"` - reduce scaffolding
+- `"use [domain] analogies for this"` - change analogy domain mid-session
+- `"I already know [X], skip the bridging"` - reduce scaffolding on the fly
 - `"ship mode"` - turn off learning mode when you need speed
 
 ---
@@ -146,46 +315,10 @@ Everything is customized through the config block and DOK tracker. You never edi
 | `"learning mode"` | Activate for full session |
 | `"learning mode for [X]"` | Activate for specific skill/phase |
 | `"ship mode"` | Return to normal execution |
-| `"challenge me"` | Get a micro-challenge |
+| `"challenge me"` | Get a micro-challenge for a skill you're building |
 | `"explain that"` | Agent unpacks a decision it just made |
 | `"where am I?"` | Agent surfaces your current DOK levels |
 | `"why?"` | Go one layer deeper in explanation |
-
----
-
-## Updating
-
-```bash
-npx skills update learning-mode -g
-```
-
-For Claude Desktop: download the latest `.skill` file from releases and re-install.
-
----
-
-## Uninstalling
-
-```bash
-npx skills remove learning-mode -g
-```
-
-For Claude Desktop: go to Settings > Skills and remove it.
-
----
-
-## How It Works
-
-The skill is pure markdown - no scripts, no binaries, no network calls. It's behavioral instructions that change how your agent interacts with you. The agent reads the SKILL.md and follows the protocol.
-
-The core framework:
-- **4-Tier Expert Engineer Model** - Orientation, Judgment, Execution, Multiplication
-- **DOK levels 1-4** - calibrate scaffolding depth
-- **Feature Build mode** - learning while coding (agent guides instead of executes)
-- **PR Review mode** - learning while reading code (context-first, vocabulary bridging)
-- **Graduation signals** - the agent notices when you level up
-- **Micro-challenges** - focused 5-15 minute exercises targeting specific skills
-
-See [SKILL.md](./SKILL.md) for the complete protocol.
 
 ---
 
@@ -209,11 +342,11 @@ See [SKILL.md](./SKILL.md) for the complete protocol.
 
 Built on:
 - The **Three Dimensions of AI Collaboration** framework (DOK, Tool Maturity, Agentic Delegation Trust)
-- **Webb's Depth of Knowledge** model adapted for engineering skill acquisition
+- **Webb's Depth of Knowledge** model adapted for engineering and design skill acquisition
 - Practical experience calibrating AI agent behavior for growth-oriented work
 
-Created by [Dakota Fabro](https://github.com/dakotafabro) | [AAIF](https://github.com/aaif)
+Created by [Dakota Fabro](https://github.com/dakotafabro) | [AAIF](https://aaif.dakotafabro.dev)
 
 ## License
 
-MIT - see [LICENSE](./LICENSE)
+Apache-2.0 - see [LICENSE](./LICENSE)
