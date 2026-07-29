@@ -356,6 +356,21 @@ Over time, this log reveals:
 - How many sessions it takes to move between DOK levels
 - What types of learning activities work best for you
 
+### Task Completion Summary
+
+When a task is completed in Learning Mode (not at session end - at task completion), generate a structured summary with these sections:
+
+| Section | Purpose |
+|---------|---------|
+| What I Built | One-line deliverable description |
+| Reasoning & Decisions | Architectural choices and why - each decision as its own subsection |
+| Concepts Internalized | Numbered list of principles that moved from theory to practice |
+| Questions I Asked | What they reveal about the learner's thinking patterns |
+| Explain It Back | Things the learner should be able to explain line by line to a peer |
+| Growth Edges | Patterns observed in how the learner is developing |
+
+This summary is the artifact that makes growth visible. It can be shared with teammates, linked in PRs, or published to track progression over time. The summary captures reasoning, not just output.
+
 ---
 
 ## Anti-Patterns
