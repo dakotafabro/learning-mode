@@ -118,7 +118,7 @@ def main():
         check("Has npx install command", "npx skills add dakotafabro/learning-mode -g" in readme)
         check("Has Claude Desktop instructions", ".skill" in readme)
         check("Has compatibility matrix", "Goose CLI" in readme and "Claude Desktop" in readme)
-        check("Has config block example", "Strong platform" in readme)
+        check("Has config block example", "Background knowledge" in readme)
 
     print("\n" + "=" * 40)
     if failures:
