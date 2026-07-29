@@ -93,7 +93,7 @@ If your agent doesn't support the skills CLI or `.skill` files, copy the content
 
 ## Setup
 
-The skill works immediately with zero config. Say `"learning mode"` in any session and the agent shifts behavior. For deeper calibration, complete these two optional steps:
+The skill works immediately with zero config. Say something like "I want to learn this myself - learning mode" in any session and the agent shifts behavior. For deeper calibration, complete these two optional steps:
 
 ### 1. Create Your DOK Tracker (optional, recommended)
 
@@ -131,8 +131,9 @@ Add a config block to your agent's hints file for persistent personalization acr
 ```markdown
 ## Learning Mode Config
 
-- Strong platform: [what you already know well]
+- Background knowledge: [your strongest language/framework to reference while learning another]
 - Growth platform: [what you're learning]
+- Learning style: [how you learn best - e.g. "hands-on with immediate feedback", "theory first then practice", "visual diagrams and analogies"]
 - DOK Tracker: [path to your dok-tracker.md]
 - Analogies: [optional - domains that help you think]
 - Session Log: [optional - path for learning session logs]
@@ -146,40 +147,40 @@ Everything is customized through the config block and DOK tracker. You never edi
 
 ### Platform Configuration
 
-Your strong and growth platforms tell the agent where to bridge FROM and where to scaffold TO. Here are examples for different roles:
+Your background knowledge and growth platform tell the agent where to bridge FROM and where to scaffold TO. Here are examples for different roles:
 
 **Frontend engineer learning mobile:**
 
 ```markdown
-- Strong platform: React/TypeScript, Node.js, CSS
+- Background knowledge: React/TypeScript, Node.js, CSS
 - Growth platform: Kotlin/Android (Jetpack Compose, coroutines, Dagger/Hilt)
 ```
 
 **Backend engineer learning frontend:**
 
 ```markdown
-- Strong platform: Go, PostgreSQL, distributed systems, Kubernetes
+- Background knowledge: Go, PostgreSQL, distributed systems, Kubernetes
 - Growth platform: React/TypeScript, CSS, browser APIs, accessibility
 ```
 
 **Designer learning to code:**
 
 ```markdown
-- Strong platform: Figma, design systems, visual hierarchy, typography, color theory
+- Background knowledge: Figma, design systems, visual hierarchy, typography, color theory
 - Growth platform: React, CSS-in-JS, component architecture, responsive implementation
 ```
 
 **Designer-who-codes deepening implementation skills:**
 
 ```markdown
-- Strong platform: Visual design, CSS, HTML, Figma-to-code workflows
+- Background knowledge: Visual design, CSS, HTML, Figma-to-code workflows
 - Growth platform: React state management, API integration, performance optimization
 ```
 
 **Full-stack engineer learning infrastructure:**
 
 ```markdown
-- Strong platform: Rails, React, PostgreSQL, REST APIs
+- Background knowledge: Rails, React, PostgreSQL, REST APIs
 - Growth platform: Terraform, AWS CDK, CI/CD pipelines, observability
 ```
 
@@ -210,8 +211,9 @@ You can specify different domains for different concerns, or keep it simple with
 ```markdown
 ## Learning Mode Config
 
-- Strong platform: Figma, design systems, visual design, typography, layout
+- Background knowledge: Figma, design systems, visual design, typography, layout
 - Growth platform: React, TypeScript, CSS modules, component APIs
+- Learning style: Visual - show me diagrams and map concepts to design system thinking
 - DOK Tracker: ./growth/dok-tracker.md
 - Analogies: use design system analogies for component architecture (tokens = variables, variants = props, auto-layout = flexbox)
 - Session Log: ./growth/learning-log.md
@@ -222,8 +224,9 @@ You can specify different domains for different concerns, or keep it simple with
 ```markdown
 ## Learning Mode Config
 
-- Strong platform: Java, Spring Boot, PostgreSQL, distributed systems, event sourcing
+- Background knowledge: Java, Spring Boot, PostgreSQL, distributed systems, event sourcing
 - Growth platform: React/TypeScript, CSS, browser APIs, accessibility, responsive design
+- Learning style: Theory first, then implementation - explain the principle before showing code
 - DOK Tracker: ~/growth/dok-tracker.md
 - Analogies: use server architecture analogies for component patterns (services = components, DTOs = props, middleware = hooks)
 - Session Log: ~/growth/sessions.md
@@ -234,8 +237,9 @@ You can specify different domains for different concerns, or keep it simple with
 ```markdown
 ## Learning Mode Config
 
-- Strong platform: Visual design, CSS, HTML, basic React components, Figma
+- Background knowledge: Visual design, CSS, HTML, basic React components, Figma
 - Growth platform: React state management (Context, reducers, Zustand), REST API integration, error handling, loading states
+- Learning style: Hands-on with immediate feedback - let me try first, correct after
 - DOK Tracker: ./dok-tracker.md
 - Analogies: use design workflow analogies (artboards = routes, layers = component tree, symbols = shared components, prototyping = state transitions)
 - Session Log: ./learning-sessions.md
@@ -245,7 +249,9 @@ You can specify different domains for different concerns, or keep it simple with
 
 | Option | Where | What it controls |
 |--------|-------|-----------------|
-| Strong/growth platforms | Config block | How the agent bridges concepts |
+| Background knowledge | Config block | What the agent bridges FROM when explaining new concepts |
+| Growth platform | Config block | What the agent scaffolds TO |
+| Learning style | Config block | How the agent structures explanations and exercises |
 | DOK levels per skill | dok-tracker.md | How much scaffolding per skill |
 | Tier assignments | dok-tracker.md | What TYPE of scaffolding |
 | Analogy preferences | Config block | Which domains the agent uses for explanations |
@@ -253,24 +259,29 @@ You can specify different domains for different concerns, or keep it simple with
 
 ### In-session adjustments (no file edits needed):
 
-- `"learning mode for [specific skill]"` - narrow to one skill
-- `"use [domain] analogies for this"` - change analogy domain mid-session
-- `"I already know [X], skip the bridging"` - reduce scaffolding on the fly
-- `"ship mode"` - turn off learning mode when you need speed
+Everything adapts through conversation. No config changes required mid-session.
+
+- "Learning mode for just the networking layer." - narrows scope to one skill
+- "Use sports analogies for this instead." - switches analogy domain
+- "I already know dependency injection, skip that part." - reduces scaffolding
+- "I need to ship this fast, just build it." - agent returns to full execution for that task
 
 ---
 
 ## Usage
 
-| Command | Effect |
-|---------|--------|
-| `"learning mode"` | Activate for full session |
-| `"learning mode for [X]"` | Activate for specific skill/phase |
-| `"ship mode"` | Return to normal execution |
-| `"challenge me"` | Get a micro-challenge for a skill you're building |
-| `"explain that"` | Agent unpacks a decision it just made |
-| `"where am I?"` | Agent surfaces your current DOK levels |
-| `"why?"` | Go one layer deeper in explanation |
+Say these naturally in conversation. The agent recognizes the intent.
+
+| Say this | What happens |
+|----------|--------------|
+| "I want to write this composable myself. Learning mode." | Agent shifts to guide posture. You write, it scaffolds and validates. |
+| "Learning mode for the ViewModel layer only." | Agent guides on that specific skill. Executes normally on everything else. |
+| "Challenge me on state design." | Agent offers a 5-15 min exercise targeting a skill you're building. |
+| "Where am I on Android?" | Agent surfaces your current depth-of-knowledge levels per skill. |
+| "Explain that decision you just made." | Agent unpacks its reasoning so you can internalize the pattern. |
+| "Why does this go in the UseCase instead of the ViewModel?" | Agent goes one layer deeper, explaining the principle behind the choice. |
+| "I already know React state. Skip the bridging for hooks." | Agent reduces scaffolding on the fly for that concept. |
+| "Use cooking analogies for this architecture." | Agent switches analogy domain mid-session. |
 
 ---
 
