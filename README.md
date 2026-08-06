@@ -30,9 +30,28 @@ Each skill you're growing gets a Depth of Knowledge level (1-4) that tells the a
 | Feature Build | Learning while coding | Guides instead of executes. Asks "what would you try?" before showing answers. Offers micro-challenges (5-15 min exercises) at growth opportunities. |
 | PR Review | Learning while reading code | Provides context-first explanations, bridges vocabulary from your strong platform, helps you understand WHY not just WHAT. |
 
+**Build Checkpoints**
+
+Every learning mode build runs through four checkpoints that add rigor to the process:
+
+1. **Task Comprehension** - Before code, verify you understand the scope and changes needed
+2. **Concept Connection** - Connect this task to patterns from previous sessions (cumulative learning, not isolated reps)
+3. **Thinking Challenges** - During the build, the agent pushes on your reasoning at decision points
+4. **Understanding Assessment** - When you ask "check my work," the agent tests your understanding, not just correctness
+
+Plus a **Session Close Reflection** - one sentence on what you learned. Forces consolidation.
+
+**Retrieval Decay**
+
+Skills fade without practice. If a skill below DOK 2.5 hasn't been touched in 14+ days, the agent surfaces a single micro-retrieval at session start. Tests recall, not recognition. Wrong answers are useful data.
+
+**Adaptive Intensity**
+
+The agent calibrates within a session. Strong answers lead to harder questions. Struggle leads to more scaffolding. Never announced - just felt.
+
 **Graduation Signals**
 
-The agent notices when you level up. When you start making correct decisions without prompting, when your questions shift from "what" to "why" to "what if," the agent surfaces it: "You're consistently making good judgment calls on X - ready to move to Execution tier?" Growth becomes visible.
+The agent notices when you level up. When you start making correct decisions without prompting, when your questions shift from "what" to "why" to "what if," the agent surfaces it: "You're consistently making good judgment calls on X - ready to move to Execution tier?" Growth becomes visible. The highest signal: **Teaching Back** - can you explain the principle to someone else?
 
 **Agent-agnostic.** Works with Goose (CLI + Desktop), Claude (Code + Desktop), Cursor, Codex, Amp, Gemini CLI, and any agent that reads markdown instructions.
 
