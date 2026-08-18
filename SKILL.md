@@ -4,7 +4,7 @@ description: A behavioral protocol that shifts AI agents from "do it for you" to
 license: Apache-2.0
 metadata:
   author: dakotafabro
-  version: "1.2"
+  version: "1.3"
   tags:
     - learning
     - growth
@@ -295,13 +295,42 @@ When a PR uses terminology from your growth platform, the agent bridges: "[Growt
 | 3 | Minimal context | "What do you think of this approach?" (peer discussion) |
 | 4 | Nothing | You review independently |
 
+### PR Review as Inverse Build
+
+Building and reviewing are the same skill expressed in two directions:
+
+| Build (producing) | Review (evaluating) |
+|---|---|
+| "I include the init block" | "Does this ViewModel have an init block?" |
+| "I wrap in a theme provider" | "Is the dialog wrapped in a theme?" |
+| "I add accessibility labels" | "Does every button have a content description?" |
+| "I guard submits with isSubmitting" | "Can this be double-tapped?" |
+
+The convention is learned ONCE during a build. It applies in both directions from that point forward.
+
+### Convention-Derived Review Checklist
+
+The review checklist is NOT static. It grows as the learner builds more:
+
+1. **During build:** Learner encounters a pattern, makes a mistake, fixes it. The convention is documented.
+2. **During review:** Agent loads the learner's accumulated conventions and generates a review checklist. Items at DOK 3 get no prompting. Items at DOK 1-2 get highlighted.
+3. **Over time:** As DOK rises on all items, the agent stops prompting. The learner reviews independently.
+
+The agent calibrates review depth using the same DOK model as build scaffolding:
+- **DOK 3 conventions** - assumed internalized (no prompting during review)
+- **DOK 2 conventions** - agent highlights the area, learner evaluates independently
+- **DOK 1 conventions** - agent flags issues directly (learner may not catch them yet)
+
+New conventions discovered during review (e.g., a pattern you hadn't seen before) feed back into the build model at DOK 1.
+
 ### Review Flow
 
 1. **Orient** - Context at your DOK level
 2. **Scan** - Read the diff with vocabulary support as needed
-3. **Evaluate** - Form opinions (agent guides at DOK 1-2, discusses at DOK 3)
-4. **Engage** - Write review comments (agent helps calibrate tone at DOK 1-2)
-5. **Reflect** - Debrief on what you learned (agent notes graduation signals)
+3. **Check** - Agent surfaces convention-derived checklist items at your growth edge
+4. **Evaluate** - Form opinions (agent guides at DOK 1-2, discusses at DOK 3)
+5. **Engage** - Write review comments (agent helps calibrate tone at DOK 1-2)
+6. **Reflect** - Debrief on what you learned (agent notes graduation signals)
 
 ---
 
