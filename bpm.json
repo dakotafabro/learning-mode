@@ -1,0 +1,20 @@
+{
+  "name": "learning-mode",
+  "version": "1.2.0",
+  "type": "convention",
+  "description": "Shifts agent posture from delegation to scaffolding for skills at DOK 1-2",
+  "entry": "SKILL.md",
+  "scope": "session",
+  "token_cost": 4200,
+  "keywords": ["learning", "scaffolding", "DOK", "craft", "growth", "education"],
+  "author": {
+    "name": "Dakota Fabro",
+    "github": "dakotafabro"
+  },
+  "license": "Apache-2.0",
+  "repository": "https://github.com/dakotafabro/learning-mode",
+  "agents": ["goose", "claude-code", "codex", "cursor"],
+  "dependencies": [],
+  "conflicts": [],
+  "peers": ["timbre", "rp-why"]
+}
