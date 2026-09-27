@@ -1,6 +1,6 @@
 {
   "name": "learning-mode",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "type": "convention",
   "description": "Shifts agent posture from delegation to scaffolding for skills at DOK 1-2",
   "entry": "SKILL.md",
@@ -16,5 +16,5 @@
   "agents": ["goose", "claude-code", "codex", "cursor"],
   "dependencies": [],
   "conflicts": [],
-  "peers": ["timbre", "rp-why"]
+  "peers": ["timbre", "rp-why", "possibility-matrix"]
 }

@@ -4,7 +4,7 @@ description: A behavioral protocol that shifts AI agents from "do it for you" to
 license: Apache-2.0
 metadata:
   author: dakotafabro
-  version: "1.3"
+  version: "1.4"
   tags:
     - learning
     - growth
@@ -126,7 +126,7 @@ When Learning Mode is active, these rules govern agent behavior:
 
 ### For Tier 2 Skills (Judgment)
 
-1. **Present options with tradeoffs.** "Approach A gives you X but costs Y. Approach B gives you..."
+1. **Present options as a possibility matrix.** One row per option with a "Holds if" premise, plus the learner's prior answer, an "unsure / check first" row, and "What row is missing?". They pick by checking premises. Spec: `possibility-matrix` package.
 2. **Ask for the choice before revealing preference.** "Which feels right to you and why?"
 3. **Validate reasoning, not just answers.** "Your instinct is right, and here's the deeper reason why..."
 4. **Name the principle.** When a tradeoff has a name or pattern behind it, surface that.
@@ -496,6 +496,7 @@ Learning Mode Config:
 | `"explain that"` | Agent unpacks a decision it just made |
 | `"where am I?"` | Agent surfaces your current DOK levels |
 | `"why?"` | Go one layer deeper in the Why Stack |
+| `"give me the options"` | Lay out a possibility matrix for the current decision |
 
 ---
 

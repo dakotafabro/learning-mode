@@ -301,6 +301,7 @@ Say these naturally in conversation. The agent recognizes the intent.
 | "Why does this go in the UseCase instead of the ViewModel?" | Agent goes one layer deeper, explaining the principle behind the choice. |
 | "I already know React state. Skip the bridging for hooks." | Agent reduces scaffolding on the fly for that concept. |
 | "Use cooking analogies for this architecture." | Agent switches analogy domain mid-session. |
+| "Give me the options." | Agent lays out a possibility matrix: one row per option with the premise that must hold. You check premises, then pick. See [possibility-matrix](https://github.com/dakotafabro/possibility-matrix). |
 
 ---
 
