@@ -131,7 +131,7 @@ Open it and fill in:
 
 Without a tracker, Learning Mode still works - the agent just calibrates from conversation context rather than persistent state.
 
-### 2. Add Your Configuration Block (optional)
+### 2. Add Your Configuration (optional)
 
 Add a config block to your agent's hints file for persistent personalization across sessions.
 

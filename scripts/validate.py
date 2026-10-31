@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import os
 import re
 import sys
 import yaml
@@ -9,6 +10,7 @@ SKILL_MD = REPO_ROOT / "SKILL.md"
 TRACKER = REPO_ROOT / "dok-tracker.template.md"
 LICENSE = REPO_ROOT / "LICENSE"
 README = REPO_ROOT / "README.md"
+PERSONAL_REFS = Path(os.environ.get("LEARNING_MODE_PERSONAL_REFS", Path.home() / ".config" / "learning-mode" / "personal-refs.txt"))
 
 failures = []
 
@@ -96,9 +98,12 @@ def main():
     check("No block quotes in body", len(blockquotes) == 0, f"found {len(blockquotes)} lines")
 
     print("\n=== No Personal References ===")
-    personal_refs = ["Dakota", "TIDAL", "tidal", "the_professional", "dakotaos", "~/Development"]
-    found = [r for r in personal_refs if r in body]
-    check("No personal/company references in protocol body", len(found) == 0, f"found: {found}")
+    if PERSONAL_REFS.exists():
+        personal_refs = [l.strip() for l in PERSONAL_REFS.read_text().splitlines() if l.strip() and not l.startswith("#")]
+        found = [r for r in personal_refs if r in body]
+        check("No personal/company references in protocol body", len(found) == 0, f"found: {found}")
+    else:
+        print(f"  - skipped: no terms file at {PERSONAL_REFS} (one term per line; set LEARNING_MODE_PERSONAL_REFS to use another path)")
 
     print("\n=== Size Check ===")
     token_estimate = len(content) // 4
