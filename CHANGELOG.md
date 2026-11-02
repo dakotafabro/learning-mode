@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.2 (2026-11-01)
+- `bpm.json`: `token_cost` 5900 (was 4200), the cost usebpm.dev measures from `SKILL.md` at about 4 characters per token, rounded to the nearest 100. Version 1.4.2.
+
+**What changes for you:** nothing in how learning mode works. Your AGENTS.md total goes up by 1,700 tokens on the next install.
+
 ## 1.4.1 (2026-10-31)
 - `scripts/validate.py` reads the personal references it checks for from a local file outside the package (`~/.config/learning-mode/personal-refs.txt`, one term per line, or the path in `LEARNING_MODE_PERSONAL_REFS`) and skips that check when the file is missing.
 - `bpm.json`: version 1.4.1.

@@ -22,7 +22,7 @@ Your DOK levels and tiers are yours to set and update. When the agent says you m
 
 ## Cost
 
-About 4,200 tokens of context (`token_cost` in bpm.json), the largest of these packages.
+About 5,900 tokens of context (`token_cost` in bpm.json), the largest of these packages.
 
 ## Check it's working
 

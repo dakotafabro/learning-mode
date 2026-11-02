@@ -1,11 +1,11 @@
 {
   "name": "learning-mode",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "type": "convention",
   "description": "Shifts agent posture from delegation to scaffolding for skills at DOK 1-2",
   "entry": "SKILL.md",
   "scope": "session",
-  "token_cost": 4200,
+  "token_cost": 5900,
   "keywords": ["learning", "scaffolding", "DOK", "craft", "growth", "education"],
   "author": {
     "name": "Dakota Fabro",
